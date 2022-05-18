@@ -1,0 +1,83 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+body {
+  background-color: #4520AB;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+   height: 100vh;
+ }
+
+ /* logo wrapper */
+ .ice-cream_logo {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   position: absolute;
+ }
+
+ /* ice-cream CREAM */
+ .ice-cream_cream {
+   width: 100px;
+   height: 150px;
+  background-color: #FFF1C1;
+  border-radius: 50px 50px 20px 20px;
+   transition: 0.3s ease;
+ }
+
+ .ice-cream_cream:before {
+   content: '';
+   position: absolute;
+   width: 25px;
+   height: 25px;
+   background-color: #4520AB;
+   border-radius: 100%;
+   top: 7px;
+ }
+
+ .ice-cream_cream::after {
+   content: '';
+   position: absolute;
+   width: 25px;
+   height: 25px;
+   background-color: #4520AB;
+   border-radius: 100%;
+   top: -2px;
+   left: 10px;
+ }
+
+ /* ice-cream STICK */
+ .ice-cream_stick {
+   width: 30px;
+   height: 40px;
+  background-color: #FE5F55;
+  bottom: 10px;
+  position: absolute;
+   bottom: -40px;
+   border-radius: 0 0 10px 10px;
+ }
+
+ .ice-cream_stick::before {
+   content: '';
+   position: absolute;
+   width: 30px;
+   height: 10px;
+   background-color: #293462;
+   opacity: 45%;
+ }
+
+ /* secret */
+ .secret {
+   width: 70px;
+   height: auto;
+   position: absolute;
+   top: 50px;
+   left: 25px;
+   font-family: 'Courier New', Courier, monospace;
+   font-size: 18px;
+   letter-spacing: 3px;
+   font-style: italic;
+   color: #4520AB;
+ } 
