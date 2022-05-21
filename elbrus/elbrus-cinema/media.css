@@ -35,7 +35,7 @@
 @media (max-width: 450px) {
 
   .container {
-    height: calc(100vh - 50px);
+    height: calc(100vh - 60px);
   }
 
   header {
@@ -55,7 +55,7 @@
   }
 
   .some-info {
-    font-size: 18px;
+    font-size: 17px;
   }
 
   .movie-card {
@@ -79,10 +79,6 @@
     width: 350px;
   }
 
-  .some-info {
-    font-size: 18px;
-  }
-
 }
 
 @media (max-width: 360px) {
@@ -100,7 +96,7 @@
 
   .media-width-360 {
     display: block;
-    font-size: 10px;
+    font-size: 12px;
     text-align: center;
   }
 
