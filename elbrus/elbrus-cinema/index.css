@@ -1,0 +1,278 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+html {
+  overflow:hidden;
+}
+
+html::-webkit-scrollbar {
+  display: none;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+/* header */
+header {
+  width: 100%;
+  height: 70px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  background-color: rgb(75, 9, 167);
+}
+
+/* elbrus cinema logo */
+.logo {
+  font-size: 11px;
+  color: rgb(143, 230, 251);
+  font-weight: 100;
+  letter-spacing: 2px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 4px;
+}
+
+.logo-text_elbrus {
+  background-color: rgb(143, 230, 251);
+  color: rgb(75, 9, 167);
+  text-transform: uppercase;
+  border-radius: 3px;
+  padding: 6px 4px 5px 6px;
+  margin-bottom: 3px;
+}
+
+.logo-text_cinema {
+  padding-left: 1px;
+  font-size: 10px;
+}
+
+/* navigation */
+.nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.nav a {
+  font-size: 16px;
+  font-weight: bold;
+  color: rgb(94, 88, 214);
+  text-decoration: none;
+  margin-right: 25px;
+  padding: 24px 0;
+  border-bottom: 3px solid transparent;
+  transition: 0.2s ease-in;
+}
+
+.nav a:hover {
+  color: rgb(236, 198, 106);
+  border-bottom: 3px solid rgb(236, 198, 106);
+  padding-bottom: 24px;
+}
+
+/* search icon */
+.search {
+  width: 20px;
+  height: 20px;
+  position: relative;
+  top: 10px;
+  cursor: pointer;
+  padding: 0 30px 35px 0;
+}
+
+.search::before {
+  content: '';
+  width: 12px;
+  height: 12px;
+  border: 2px solid rgb(94, 88, 214);
+  border-radius: 100%;
+  position: absolute;
+  top: -2px;
+  left: 0;
+  transition: 0.2s ease-in;
+}
+
+.search::after {
+  content: '';
+  width: 3px;
+  height: 7px;
+  background-color: rgb(94, 88, 214);
+  border-radius: 5px;
+  transform: rotate(-44deg);
+  position: absolute;
+  bottom: 18px;
+  right: 13px;
+  transition: 0.2s ease-in;
+}
+
+.search:hover.search::before {
+  border-color: rgba(236, 198, 106);
+}
+
+.search:hover.search::after {
+  background-color: rgba(236, 198, 106);
+}
+
+/* account icon */
+.account {
+  width: 20px;
+  height: 15px;
+  background-color: rgb(94, 88, 214);
+  border-radius: 8px 10px 5px 5px;
+  position: relative;
+  margin-top: 10px;
+}
+
+.account::before {
+  content: '';
+  width: 9px;
+  height: 9px;
+  background-color: rgb(94, 88, 214);
+  position: absolute;
+  top: -9px;
+  left: 7px;
+  border-radius: 100%;
+  z-index: 2;
+}
+
+.account::after {
+  content: '';
+  width: 11px;
+  height: 6px;
+  background-color: rgb(75, 9, 167);
+  position: absolute;
+  top: -3px;
+  left: 6px;
+  border-radius: 100%;
+}
+
+.menu {
+  display: none;
+}
+
+/* main */
+.main {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  overflow: auto;
+  height: 100vh;
+  margin-top: 60px;
+  padding: 30px 0 50px 0;
+  transition: 0.3s ease;
+}
+
+.main::-webkit-scrollbar {
+  display: none;
+}
+
+/* block-wrapper */
+.block-wrapper {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+  max-width: 1100px;
+}
+
+.some-info {
+  font-size: 20px;
+  color: rgb(75, 9, 167);
+  margin-left: 5px;
+}
+
+/* movies-card wrapper */
+.movies-cards_wrapper {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  overflow: auto;
+  white-space: nowrap;
+  padding: 0 13px;
+}
+
+.movies-cards_wrapper::-webkit-scrollbar {
+  display: none;
+}
+
+/* movie-card */
+.movie-card {
+  margin-top: 15px;
+  margin-right: 25px;
+  width: 175px;
+}
+
+.movie-card_wrap {
+  position: relative;
+  width: 175px;
+  height: 250px;
+  margin-bottom: 10px;
+}
+
+.movie-card_reiting {
+  font-size: 12px;
+  padding: 5px 10px 6px 10px;
+  border-radius: 5px;
+  color: #fff;
+  background-color: rgb(107, 183, 69);
+  position: absolute;
+  top: 10px;
+  left: -6px;
+}
+
+.movie-card_plus {
+  font-size: 12px;
+  letter-spacing: 1px;
+  padding: 5px 10px 6px 10px;
+  color: #fff;
+  border-radius: 5px;
+  background: linear-gradient(to right, #3f5efb, #7b57ce, #a751ac, #fc466b);
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+}
+
+/* movie card image */
+.movie-card_img {
+  border-radius: 5px;
+  height: 250px;
+}
+
+.movie-card_descr {
+  padding: 0 3px;
+  color: rgb(75, 9, 167);
+}
+
+.movie-card_descr-title {
+  font-size: 13px;
+  font-weight: bold;
+  margin-bottom: 5px;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.movie-card_descr-info {
+  font-size: 12px;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.media-width-360 {
+  display: none;
+} 
+

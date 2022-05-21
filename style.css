@@ -2,82 +2,124 @@
   padding: 0;
   margin: 0;
 }
-body {
+
+html {
+  overflow: hidden;
+}
+
+.container {
   background-color: #4520AB;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100%;
+}
+
+/* logo wrapper */
+.ice-cream_logo {
   display: flex;
   justify-content: center;
   align-items: center;
-   height: 100vh;
- }
+  position: relative;
+}
 
- /* logo wrapper */
- .ice-cream_logo {
-   display: flex;
-   justify-content: center;
-   align-items: center;
-   position: absolute;
- }
-
- /* ice-cream CREAM */
- .ice-cream_cream {
-   width: 100px;
-   height: 150px;
+/* ice-cream CREAM */
+.ice-cream_cream {
+  width: 100px;
+  height: 150px;
   background-color: #FFF1C1;
   border-radius: 50px 50px 20px 20px;
-   transition: 0.3s ease;
- }
+  transition: 0.3s ease;
+}
 
- .ice-cream_cream:before {
-   content: '';
-   position: absolute;
-   width: 25px;
-   height: 25px;
-   background-color: #4520AB;
-   border-radius: 100%;
-   top: 7px;
- }
+.ice-cream_cream:before {
+  content: '';
+  position: absolute;
+  width: 25px;
+  height: 25px;
+  background-color: #4520AB;
+  border-radius: 100%;
+  top: 7px;
+}
 
- .ice-cream_cream::after {
-   content: '';
-   position: absolute;
-   width: 25px;
-   height: 25px;
-   background-color: #4520AB;
-   border-radius: 100%;
-   top: -2px;
-   left: 10px;
- }
+.ice-cream_cream::after {
+  content: '';
+  position: absolute;
+  width: 25px;
+  height: 25px;
+  background-color: #4520AB;
+  border-radius: 100%;
+  top: -2px;
+  left: 10px;
+}
 
- /* ice-cream STICK */
- .ice-cream_stick {
-   width: 30px;
-   height: 40px;
+/* ice-cream STICK */
+.ice-cream_stick {
+  width: 30px;
+  height: 40px;
   background-color: #FE5F55;
   bottom: 10px;
   position: absolute;
-   bottom: -40px;
-   border-radius: 0 0 10px 10px;
- }
+  bottom: -40px;
+  border-radius: 0 0 10px 10px;
+}
 
- .ice-cream_stick::before {
-   content: '';
-   position: absolute;
-   width: 30px;
-   height: 10px;
-   background-color: #293462;
-   opacity: 45%;
- }
+.ice-cream_stick::before {
+  content: '';
+  position: absolute;
+  width: 30px;
+  height: 10px;
+  background-color: #293462;
+  opacity: 45%;
+}
 
- /* secret */
- .secret {
-   width: 70px;
-   height: auto;
-   position: absolute;
-   top: 50px;
-   left: 25px;
-   font-family: 'Courier New', Courier, monospace;
-   font-size: 18px;
-   letter-spacing: 3px;
-   font-style: italic;
-   color: #4520AB;
- } 
+/* secret */
+.secret {
+  width: 70px;
+  height: auto;
+  position: absolute;
+  top: 50px;
+  left: 25px;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 18px;
+  letter-spacing: 3px;
+  font-style: italic;
+  color: #4520AB;
+} 
+
+.elbrus-portfolio {
+  margin-top: 80px;
+}
+
+.elbrus-cinema {
+  text-decoration: none;
+}
+
+/* elbrus cinema logo */
+.logo {
+  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 15px;
+  color: rgb(143, 230, 251);
+  font-weight: 100;
+  letter-spacing: 2px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.logo-text_elbrus {
+  background-color: rgb(143, 230, 251);
+  color: rgb(75, 9, 167);
+  text-transform: uppercase;
+  border-radius: 3px;
+  padding: 6px 4px 5px 6px;
+  margin-bottom: 3px;
+}
+
+.logo-text_cinema {
+  padding-left: 2px;
+  font-size: 13px;
+}
