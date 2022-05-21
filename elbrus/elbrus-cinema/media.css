@@ -75,6 +75,14 @@
     width: 350px;
   }
 
+  .main {
+    padding-bottom: 90px;
+  }
+
+  .some-info {
+    font-size: 18px;
+  }
+
 }
 
 @media (max-width: 360px) {
@@ -91,6 +99,7 @@
   }
 
   .media-width-360 {
+    display: block;
     font-size: 10px;
     text-align: center;
   }

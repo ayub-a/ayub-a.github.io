@@ -186,7 +186,7 @@ header {
 .block-wrapper {
   display: flex;
   flex-direction: column;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
   max-width: 1100px;
 }
 
