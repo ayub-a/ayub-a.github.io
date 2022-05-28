@@ -1,4 +1,9 @@
 @media (max-width: 610px) {
+
+  html {
+    overflow: visible;
+  }
+
   .library-add {
     width: 340px
   }

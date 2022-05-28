@@ -127,8 +127,7 @@ html {
   position: absolute;
   top: 50%;
   font-size: 20px;
-  color:rgb(187, 187, 187);
-  transition: 0.3s;
+  color:#bbbbbb;
 }
 
 .empty-input {
@@ -167,12 +166,14 @@ html {
   opacity: 0;
   overflow: hidden;
   pointer-events: none;
+  -webkit-transition: 0.3s ease;
   transition: 2s ease;
   z-index: 10;
 }
 
 [data-tooltip-rus]:hover::after {
   opacity: 1;
+  -webkit-transition: 0.4s ease;
   transition: 0.4s ease;
   z-index: 11;
 }
@@ -192,11 +193,13 @@ html {
   opacity: 0;
   overflow: hidden;
   pointer-events: none;
+  -webkit-transition: 0.3s ease;
   transition: 2s ease;
 }
 
 [data-tooltip-eng]:hover::after {
   opacity: 1;
+  -webkit-transition: 0.4s ease;
   transition: 0.4s ease;
   z-index: 11;
 }
