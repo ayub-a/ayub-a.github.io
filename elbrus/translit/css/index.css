@@ -1,0 +1,202 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 16px;
+}
+
+html {
+  overflow: hidden;
+}
+
+/* main style configs */
+:root {
+  --main-border-color: #ffffff;
+  --main-font-color: #000000;
+  --main-color: #4520AB;
+}
+
+.container {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 15px;
+}
+
+.title {
+  font-size: 25px;
+  font-weight: bold;
+  margin: 10px 0;
+  font-family:'Courier New', Courier, monospace;
+  color: var(--main-font-color);
+}
+
+/* input section */
+.library-add {
+  background-color: var(--main-color);
+  position: relative;
+  border: 1px solid var(--main-border-color);
+  border-radius: 10px;
+  margin-bottom: 10px;
+  padding: 20px;
+  width: 408px;
+}
+
+.library-add-input,
+.library-add-btn,
+.library-clear-btn {
+  padding: 8px 10px;
+  border: none;
+  border-radius: 4px;
+  color: var(--main-font-color);
+}
+
+/* input */
+.library-add-input {
+  outline-color: #8fe6fb;
+  width: 100%;
+  color: var(--main-font-color);
+  margin-bottom: 10px;
+}
+
+/* add button */
+.library-add-btn {
+  background-color: chartreuse;
+  margin-right: 5px;
+  cursor: pointer;
+}
+
+/* clear button */
+.library-clear-btn {
+  background-color: #f33b3b;
+  color: #fff;
+  cursor: pointer;
+}
+
+/* library */
+.library {
+  position: relative;
+  padding-top: 45px;
+}
+
+.library-wrap {
+  display: flex;
+  justify-content: center;
+  overflow: scroll;
+  white-space: nowrap;
+  height: 300px;
+  border: 1px solid var(--main-border-color);
+  background-color: var(--main-color);
+  border-radius: 10px;
+  margin-bottom: 20px;
+  padding: 15px 0;
+}
+
+.library-rus,
+.library-eng {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 200px;
+  height: fit-content;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.library-rus {
+  margin-right: 5px;
+  border-right: 1px solid #fff;
+}
+
+.rus-text,
+.eng-text {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: 100px;
+  transition: 0.3s ease;
+  text-align: center;
+  margin-bottom: 5px;
+  color: #fff;
+}
+
+.library-plug {
+  position: absolute;
+  top: 50%;
+  font-size: 20px;
+  color:rgb(187, 187, 187);
+  transition: 0.3s;
+}
+
+.empty-input {
+  position: absolute;
+  top: 0;
+  background-color: #ffc811;
+  width: 100%;
+  color: #000;
+  font-weight: bold;
+  text-align: center;
+  border-radius: 5px;
+  padding: 8px;
+  transition: 0.3s;
+  opacity: 0;
+}
+
+/* activate empty input alert */
+.active {
+  opacity: 100%;
+  transition: 0.3s;
+  z-index: 10;
+}
+
+/* tooltip in russian  */
+[data-tooltip-rus]::after {
+  content: attr(data-tooltip-rus);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: calc(100% - 15px);
+  color: var(--main-font-color);
+  font-weight: bold;
+  background: #8fe6fb;
+  border-radius: 5px;
+  padding: 8px;
+  opacity: 0;
+  overflow: hidden;
+  pointer-events: none;
+  transition: 2s ease;
+  z-index: 10;
+}
+
+[data-tooltip-rus]:hover::after {
+  opacity: 1;
+  transition: 0.4s ease;
+  z-index: 11;
+}
+
+/* tooltip in english  */
+[data-tooltip-eng]::after {
+  content: attr(data-tooltip-eng);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: calc(100% - 15px);
+  color: var(--main-font-color);
+  font-weight: bold;
+  background: #8fe6fb;
+  border-radius: 5px;
+  padding: 8px;
+  opacity: 0;
+  overflow: hidden;
+  pointer-events: none;
+  transition: 2s ease;
+}
+
+[data-tooltip-eng]:hover::after {
+  opacity: 1;
+  transition: 0.4s ease;
+  z-index: 11;
+}

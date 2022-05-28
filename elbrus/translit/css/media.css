@@ -1,0 +1,14 @@
+@media (max-width: 610px) {
+  .library-add {
+    width: 340px
+  }
+
+  .library-rus,
+  .library-eng {
+    width: 165px
+  }
+}
+
+@media (max-width: 360px) {
+  
+} 
