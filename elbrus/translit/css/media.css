@@ -10,10 +10,7 @@
 
   .library-rus,
   .library-eng {
-    width: 165px
+    width: 169px
   }
-}
 
-@media (max-width: 360px) {
-  
-} 
+}

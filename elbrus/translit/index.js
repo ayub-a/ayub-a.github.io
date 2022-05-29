@@ -9,56 +9,120 @@ const libraryPlug = document.querySelector('.library-plug');
 const emptyInput = document.querySelector('.empty-input');
 
 
-// add new word to library button
-addToLibraryBtn.addEventListener('click', () => {
-  const inputValue = libraryInput.value;
+// check mobile 
+const mobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
 
-  let translited = translit(inputValue);
-  addWordToLibrary(inputValue, translited, inputValue);
+if(mobile){
+  emptyInput.textContent = '';
+  emptyInput.textContent = 'Мобильная версия в разработке!';
+
+  emptyInput.classList.add('active');
+  
+  setTimeout(() => {
+    emptyInput.classList.remove('active');
+  }, 3000);
+}
+
+// add to library button
+addToLibraryBtn.addEventListener('click', () => {
+  inputValidation(libraryInput.value)
+});
+
+// input validation
+function inputValidation(inputValue) {
+
+  if (inputValue.length > 30) {
+    emptyInput.textContent = '';
+    emptyInput.textContent = 'Не более 30 символов';
+    return errorAlert();
+  }
+
+  if (inputValue.match(/\d/)) {
+    emptyInput.textContent = '';
+    emptyInput.textContent = 'Без цифр';
+    return errorAlert();
+  } 
+
+  if (inputValue.length === 0 || inputValue === ' ') {
+    emptyInput.textContent = '';
+    emptyInput.textContent = 'Поле ввода пустое';
+    return errorAlert();
+  }
+
+  if (inputValue.match(/\w/)) {
+    emptyInput.textContent = '';
+    emptyInput.textContent = 'Только кириллица';
+    return errorAlert();
+  }
 
   libraryInput.value = '';
-});
+
+  translit(inputValue);
+}
 
 // сlear library button
 clearLibraryBtn.addEventListener('click', () => {
+
+  if (libraryRus.children.length === 0) {
+    emptyInput.textContent = '';
+    emptyInput.textContent = 'И так чисто, куда чище';
+    return errorAlert();
+  } 
+
   libraryRus.textContent = '';
   libraryEng.textContent = '';
-  libraryPlug.textContent = 'Наполни меня';
+  libraryPlug.style.display = 'block';
 })
 
-function alertEmptyInput() {
-  emptyInput.classList.add('active');
+// error alert
+function errorAlert() {
 
+  emptyInput.classList.add('active');
+  
   setTimeout(() => {
     emptyInput.classList.remove('active');
   }, 1500);
 }
 
 // add new word to library 
-function addWordToLibrary(rus, eng, input) {
-  if (input.length === 0) return alertEmptyInput();
-  libraryPlug.textContent = '';
+function addNewWordToLibrary(rusText, engText) {
 
-  const rusText = document.createElement('div');
-    rusText.textContent = rus.split('')[0].toUpperCase() + rus.slice(1);
-    rusText.setAttribute('class', 'rus-text');
+  const rusTextDiv = document.createElement('div');
+    let rusText0ToUpperCase = rusText.split('')[0].toUpperCase() + rusText.slice(1);
+    rusTextDiv.textContent = rusText0ToUpperCase;
+    rusTextDiv.setAttribute('class', 'rus-text');
 
-  const engText = document.createElement('div');
-    engText.textContent = eng.split('')[0].toUpperCase() + eng.slice(1);
-    engText.setAttribute('class', 'eng-text');
+  const engTextDiv = document.createElement('div');
+    let engText0ToUpperCase = engText.split('')[0].toUpperCase() + engText.slice(1);
+    engTextDiv.textContent = engText0ToUpperCase;
+    engTextDiv.setAttribute('class', 'eng-text');
 
-  if(input.length > 10) {
-    rusText.setAttribute('data-tooltip-rus', rus);
-    engText.setAttribute('data-tooltip-rus', eng);
+  if (mobile) {
+    console.log('mobile');
+    return doForMobile(
+      rusTextDiv, rusText0ToUpperCase,
+      engTextDiv, engText0ToUpperCase,
+      rusText
+    );
   }
 
-  libraryRus.appendChild(rusText);
-  libraryEng.appendChild(engText);
+  if (rusText.length > 10) {
+    console.log('desktop');
+    rusTextDiv.setAttribute('data-tooltip-rus', rusText0ToUpperCase);
+    rusTextDiv.style.cursor = 'pointer';
+
+    engTextDiv.setAttribute('data-tooltip-eng', engText0ToUpperCase);
+    engTextDiv.style.cursor = 'pointer';
+  }
+
+  libraryRus.appendChild(rusTextDiv);
+  libraryEng.appendChild(engTextDiv);
+
+  if (libraryRus.children.length > 0) libraryPlug.style.display = 'none';
 }
 
 // T.R.A.N.S.L.I.T.
-function translit(strRus) {
-  if (strRus.length === 0) return 0;
+function translit(rusText) {
 
   const rusEng = {
     а: 'a',
@@ -68,7 +132,7 @@ function translit(strRus) {
     д: 'd',
     е: 'e',
     ё: 'yo',
-    ж: 'j',
+    ж: 'zh',
     з: 'z',
     и: 'i',
     й: 'yo',
@@ -99,21 +163,48 @@ function translit(strRus) {
     '?': '?',
   };
 
-  let res = '';
+  let translitedToEng = '';
 
-  for (let i = 0; i < strRus.length; i++) {
+  for (let i = 0; i < rusText.length; i++) {
 
     for (let letter in rusEng) {
-      if (strRus[i].toLowerCase() === letter) {
-        res += rusEng[letter];
+      if (rusText[i].toLowerCase() === letter) {
+        translitedToEng += rusEng[letter];
       }
-
-      // if (strRus[i].toLowerCase() === rusEng[letter]) {
-      //   res += letter;
-      // }
     }
   }
 
-  return res;
+  addNewWordToLibrary(rusText, translitedToEng);
+}
+
+// script for mobile
+function doForMobile(...idk) {
+  idk[0].removeAttribute('data-tooltip-rus');
+  idk[2].removeAttribute('data-tooltip-eng');
+
+  if (idk[4].length > 10) {
+
+    idk[0].addEventListener('click', () => {
+      idk[0].setAttribute('data-tooltip-rus-mobile', idk[1]);
+  
+      setTimeout(() => {
+        idk[0].removeAttribute('data-tooltip-rus-mobile', idk[1]);
+      }, 1500);
+    })
+  
+    idk[2].addEventListener('click', () => {
+      idk[2].setAttribute('data-tooltip-eng-mobile', idk[3]);
+  
+      setTimeout(() => {
+        idk[2].removeAttribute('data-tooltip-eng-mobile', idk[3]);
+      }, 1500);
+    })
+
+  }
+
+  libraryRus.appendChild(idk[0]);
+  libraryEng.appendChild(idk[2]);
+
+  if (libraryRus.children.length > 0) libraryPlug.style.display = 'none';
 }
 

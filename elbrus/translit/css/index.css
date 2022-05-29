@@ -43,6 +43,7 @@ html {
   margin-bottom: 10px;
   padding: 20px;
   width: 408px;
+  transition: 0.3s;
 }
 
 .library-add-input,
@@ -100,34 +101,40 @@ html {
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 200px;
+  width: 203px;
   height: fit-content;
   overflow: hidden;
-  cursor: pointer;
+  transition: 0.3s;
 }
 
 .library-rus {
-  margin-right: 5px;
   border-right: 1px solid #fff;
 }
 
 .rus-text,
 .eng-text {
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  width: 100px;
-  transition: 0.3s ease;
-  text-align: center;
-  margin-bottom: 5px;
   color: #fff;
+  text-align: center;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  margin: 10px;
+  transition: 0.3s ease;
+}
+
+.rus-text {
+  width: 75px;
+}
+
+.eng-text {
+  width: 65px;
 }
 
 .library-plug {
   position: absolute;
   top: 50%;
   font-size: 20px;
-  color:#bbbbbb;
+  color:rgb(187, 187, 187);
 }
 
 .empty-input {
@@ -140,6 +147,7 @@ html {
   text-align: center;
   border-radius: 5px;
   padding: 8px;
+  -webkit-transition: 0.3s;
   transition: 0.3s;
   opacity: 0;
 }
@@ -147,10 +155,11 @@ html {
 /* activate empty input alert */
 .active {
   opacity: 100%;
-  transition: 0.3s;
+  -webkit-transition: 0.3s ease;
+  transition: 0.3s ease;
   z-index: 10;
 }
-
+ 
 /* tooltip in russian  */
 [data-tooltip-rus]::after {
   content: attr(data-tooltip-rus);
@@ -202,4 +211,44 @@ html {
   -webkit-transition: 0.4s ease;
   transition: 0.4s ease;
   z-index: 11;
+}
+
+
+/* mobile */
+[data-tooltip-rus-mobile]::after {
+  content: attr(data-tooltip-rus-mobile);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: calc(100% - 15px);
+  color: var(--main-font-color);
+  font-weight: bold;
+  background: #8fe6fb;
+  border-radius: 5px;
+  padding: 8px;
+  opacity: 100%;
+  overflow: hidden;
+  pointer-events: none;
+  -webkit-transition: 0.3s ease;
+  transition: 2s ease;
+  z-index: 10;
+}
+
+[data-tooltip-eng-mobile]::after {
+  content: attr(data-tooltip-eng-mobile);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: calc(100% - 15px);
+  color: var(--main-font-color);
+  font-weight: bold;
+  background: #8fe6fb;
+  border-radius: 5px;
+  padding: 8px;
+  opacity: 100%;
+  overflow: hidden;
+  pointer-events: none;
+  -webkit-transition: 0.3s ease;
+  transition: 2s ease;
+  z-index: 10;
 }
