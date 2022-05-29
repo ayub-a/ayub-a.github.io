@@ -117,17 +117,16 @@ html {
   text-align: center;
   overflow: hidden;
   white-space: nowrap;
-  text-overflow: ellipsis;
   margin: 10px;
   transition: 0.3s ease;
 }
 
 .rus-text {
-  width: 75px;
+  width: 45%;
 }
 
 .eng-text {
-  width: 65px;
+  width: 30%;
 }
 
 .library-plug {
