@@ -106,13 +106,13 @@ function addNewWordToLibrary(rusText, engText) {
     );
   }
 
-  if (rusText.length > 9) {
+  if (rusText.length > 8) {
     rusTextDiv.setAttribute('data-tooltip-rus', rusText0ToUpperCase);
-    rusTextDiv.style.textOverflow = 'ellipsis';
+    rusTextDiv.textContent = `${rusText.substring(0, 7)}...`;
     rusTextDiv.style.cursor = 'pointer';
 
     engTextDiv.setAttribute('data-tooltip-eng', engText0ToUpperCase);
-    engTextDiv.style.textOverflow = 'ellipsis';
+    engTextDiv.textContent = `${engText.substring(0, 7)}...`;
     engTextDiv.style.cursor = 'pointer';
   }
 
