@@ -88,32 +88,32 @@ function errorAlert() {
 function addNewWordToLibrary(rusText, engText) {
 
   const rusTextDiv = document.createElement('div');
-    let rusText0ToUpperCase = rusText.split('')[0].toUpperCase() + rusText.slice(1);
-    rusTextDiv.textContent = rusText0ToUpperCase;
-    rusTextDiv.setAttribute('class', 'rus-text');
+  rusTextDiv.setAttribute('class', 'rus-text');
 
   const engTextDiv = document.createElement('div');
-    let engText0ToUpperCase = engText.split('')[0].toUpperCase() + engText.slice(1);
-    engTextDiv.textContent = engText0ToUpperCase;
-    engTextDiv.setAttribute('class', 'eng-text');
+  engTextDiv.setAttribute('class', 'eng-text');
+
 
   if (mobile) {
-    console.log('mobile');
     return doForMobile(
-      rusTextDiv, rusText0ToUpperCase,
-      engTextDiv, engText0ToUpperCase,
-      rusText
+      rusTextDiv, rusText,
+      engTextDiv, engText,
     );
   }
 
   if (rusText.length > 8) {
-    rusTextDiv.setAttribute('data-tooltip-rus', rusText0ToUpperCase);
+
+    rusTextDiv.setAttribute('data-tooltip-rus', rusText);
     rusTextDiv.textContent = `${rusText.substring(0, 7)}...`;
     rusTextDiv.style.cursor = 'pointer';
 
-    engTextDiv.setAttribute('data-tooltip-eng', engText0ToUpperCase);
+    engTextDiv.setAttribute('data-tooltip-eng', engText);
     engTextDiv.textContent = `${engText.substring(0, 7)}...`;
     engTextDiv.style.cursor = 'pointer';
+
+  } else {
+    rusTextDiv.textContent = rusText;
+    engTextDiv.textContent = engText;
   }
 
   libraryRus.appendChild(rusTextDiv);
@@ -174,38 +174,52 @@ function translit(rusText) {
       }
     }
   }
+  let rusTextCapitalize = rusText.split('')[0].toUpperCase() + rusText.slice(1);
+  let engTextCapitalize = translitedToEng.split('')[0].toUpperCase() + translitedToEng.slice(1);
 
-  addNewWordToLibrary(rusText, translitedToEng);
+  addNewWordToLibrary(rusTextCapitalize, engTextCapitalize);
 }
 
 // script for mobile
-function doForMobile(...idk) {
-  idk[0].removeAttribute('data-tooltip-rus');
-  idk[2].removeAttribute('data-tooltip-eng');
+function doForMobile(rusTextDiv, rusText, engTextDiv, engText) {
+  rusTextDiv.removeAttribute('data-tooltip-rus');
+  engTextDiv.removeAttribute('data-tooltip-eng');
 
-  if (idk[4].length > 10) {
+  if (rusText.length > 8) {
+    rusTextDiv.textContent = `${rusText.substring(0, 7)}...`;
+    engTextDiv.textContent = `${engText.substring(0, 7)}...`;
 
-    idk[0].addEventListener('click', () => {
-      idk[0].setAttribute('data-tooltip-rus-mobile', idk[1]);
-  
-      setTimeout(() => {
-        idk[0].removeAttribute('data-tooltip-rus-mobile', idk[1]);
-      }, 1500);
-    })
-  
-    idk[2].addEventListener('click', () => {
-      idk[2].setAttribute('data-tooltip-eng-mobile', idk[3]);
-  
-      setTimeout(() => {
-        idk[2].removeAttribute('data-tooltip-eng-mobile', idk[3]);
-      }, 1500);
-    })
-
+    addEllipsisForMobile(rusTextDiv, rusText, engTextDiv, engText);
+  } else {
+    rusTextDiv.textContent = rusText;
+    engTextDiv.textContent = engText;
   }
 
-  libraryRus.appendChild(idk[0]);
-  libraryEng.appendChild(idk[2]);
+  libraryRus.appendChild(rusTextDiv);
+  libraryEng.appendChild(engTextDiv);
 
   if (libraryRus.children.length > 0) libraryPlug.style.display = 'none';
 }
 
+
+function addEllipsisForMobile(rusTextDiv, rusText, engTextDiv, engText) {
+
+  //rus text
+  rusTextDiv.addEventListener('click', () => {
+    rusTextDiv.setAttribute('data-tooltip-rus-mobile', rusText);
+
+    setTimeout(() => {
+      rusTextDiv.removeAttribute('data-tooltip-rus-mobile', rusText);
+    }, 1500);
+  })
+
+  // eng text
+  engTextDiv.addEventListener('click', () => {
+    engTextDiv.setAttribute('data-tooltip-eng-mobile', engText);
+
+    setTimeout(() => {
+      engTextDiv.removeAttribute('data-tooltip-eng-mobile', engText);
+    }, 1500);
+  })
+
+}
