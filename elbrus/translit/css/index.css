@@ -121,14 +121,6 @@ html {
   transition: 0.3s ease;
 }
 
-.rus-text {
-  width: 45%;
-}
-
-.eng-text {
-  width: 30%;
-}
-
 .library-plug {
   position: absolute;
   top: 50%;
