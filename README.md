@@ -1,3 +1,3 @@
 # Something interesting..
 
-https://ayub-a.github.ioayub-a.github.io
+https://ayub-a.github.io
